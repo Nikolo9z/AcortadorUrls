@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { AcortarUrlsService } from '../../services/acortar-urls.service';
 import { PostAcortadorUrlRequest } from '../../models/PostAcortadorUrlRequest';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule,HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

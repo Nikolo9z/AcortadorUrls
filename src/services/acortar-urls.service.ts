@@ -23,4 +23,16 @@ export class AcortarUrlsService {
     });
     return peticion 
   }
+  GetOriginalUrl(code: string):Observable<PostAcortadorUrlResponse>{
+    const peticion= this._http.get<PostAcortadorUrlResponse>('/api/AcortadorURL',{
+      headers: {
+        'Content-Type': 'application/json',
+        'access-control-allow-origin': '*'
+      },
+      params:{
+        code: code
+      }
+    });
+    return peticion 
+  }
 }
