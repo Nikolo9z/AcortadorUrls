@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   urlInput!: FormGroup;
   showInfo = false;
   code:string = '';
+  DOMAIN='http://localhost:4200/';
   constructor(
     private readonly _acortarUrlsService: AcortarUrlsService
   ) { }
@@ -37,10 +38,18 @@ export class HomeComponent implements OnInit {
         if (response.statusCode === 200) {
           console.log(response);
           this.showInfo = true;
-          this.code = response.originalURL;
+          this.code = this.DOMAIN+ response.originalURL;
         }
       }
     );
   }
+  copiarAlPortapapeles() {
+    navigator.clipboard.writeText(this.code).then(() => {
+      console.log('Texto copiado al portapapeles');
+    }).catch(err => {
+      console.error('Error al copiar al portapapeles: ', err);
+    });
+  }
+
 
 }
