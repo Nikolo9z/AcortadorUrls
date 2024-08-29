@@ -4,6 +4,7 @@ import { AcortarUrlsService } from '../../services/acortar-urls.service';
 import { PostAcortadorUrlRequest } from '../../models/PostAcortadorUrlRequest';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,6 @@ export class HomeComponent implements OnInit {
   urlInput!: FormGroup;
   showInfo = false;
   code:string = '';
-  DOMAIN='http://localhost:4200/';
   constructor(
     private readonly _acortarUrlsService: AcortarUrlsService
   ) { }
@@ -36,9 +36,8 @@ export class HomeComponent implements OnInit {
     this._acortarUrlsService.PostAcortarUrl(this.urlInput.value.url).subscribe(
       response => {
         if (response.statusCode === 200) {
-          console.log(response);
           this.showInfo = true;
-          this.code = this.DOMAIN+ response.originalURL;
+          this.code = environment.urlOrigen+ response.originalURL;
         }
       }
     );
